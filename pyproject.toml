@@ -32,16 +32,16 @@ preview = true
 
 [tool.datamodel-codegen]
 input = "iscc_did_driver/openapi.yaml"
-output = "iscc_did_driver/schema.py"
 encoding = "utf-8"
 disable-timestamp = true
 target-python-version = "3.8"
 
 [tool.poe.tasks]
-codegen = { cmd = "datamodel-codegen", help="Build code from OpenAPI Schema"}
-format = { cmd = "poetry run black .", help = "Code style formating with black" }
+codegen = { cmd = "datamodel-codegen --output iscc_did_driver/schema.py", help="Build code from OpenAPI Schema"}
+format = { cmd = "poetry run python -m iscc_did_driver.format", help = "Code style formating"}
+black = { cmd = "poetry run black .", help = "Code style formating with black" }
 test = { cmd = "poetry run pytest", help = "Run tests" }
-all = ["codegen", "format", "test"]
+all = ["codegen", "format", "black", "test"]
 
 [build-system]
 requires = ["poetry-core"]
