@@ -10,7 +10,7 @@ info:
 paths:
   /identifiers/{identifier}:
     get:
-      summary: Resolve a DID.
+      summary: Resolve an ISCC DID.
       description: <p>This endpoint resolves a DID. As input it takes the DID, plus DID resolution
         <a href="https://www.w3.org/TR/did-core/#did-resolution-options">options</a>. The
         output is a DID document in one of the supported representations, plus metadata.</p>
@@ -23,17 +23,10 @@ paths:
         name: identifier
         schema:
           type: string
-        description: The DID to be resolved.
-        examples:
-          example1:
-            value: did:sov:builder:VbPQNHsvoLZdaNU7fTBeFx
-            description: A DID using the `sov` method.
-          example2:
-            value: did:ion:EiClkZMDxPKqC9c-umQfTkR8vvZ9JPhl_xLDI9Nfk38w5w
-            description: A DID using the `ion` method.
-          example3:
-            value: did:ebsi:z25ZZFS7FweHsm9MX2Qvc6gc
-            description: A DID using the `ebsi` method.
+          format: uri
+          pattern: ^did:iscc:[2-7a-z]{10,88}$
+          example: did:iscc:miagwptv4j2z57ci
+        description: The DID to be resolved using the `iscc` method.
       - in: header
         required: false
         name: Accept
