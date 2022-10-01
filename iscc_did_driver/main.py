@@ -11,7 +11,7 @@ async def resolver(identifier: str):
     return json({"did": identifier})
 
 
-app.serve_files("iscc_did_driver", index_document="index.html")
+app.serve_files("iscc_did_driver", index_document="index.html", extensions={'.yaml', '.html', '.svg'})
 
 
 def main():
