@@ -19,6 +19,7 @@ HERE = pathlib.Path(__file__).parent.absolute().as_posix()
 
 app = Application(show_error_details=idd.opts.debug, debug=idd.opts.debug)
 app.serve_files(HERE, index_document="index.html", extensions={".yaml", ".html", ".svg"})
+app.use_cors(allow_methods="*", allow_origins="*", allow_headers="*")
 
 
 class Accept(FromHeader[str]):
