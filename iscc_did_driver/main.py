@@ -120,14 +120,11 @@ class Identifiers(ApiController):
             "didDocumentMetadata": did_doc_meta,
         }
 
-        if (
-            "*/*" in accept.value
-            or 'application/ld+json;profile="https://w3id.org/did-resolution"' in accept.value
-        ):
+        if "*/*" in accept.value or "application/ld+json" in accept.value:
             return self.response(did_res, content_type=self.ct_resolution)
 
         if "application/did+ld+json" in accept.value:
-            did_doc["@context"] = "https://www.w3.org/ns/did/v1"
+            did_doc["@context"] = "https://www.w3id.org/ns/did/v1"
             return self.response(did_doc, self.ct_ld)
 
         if "application/json" in accept.value:
