@@ -48,13 +48,13 @@ ENV PYTHONUNBUFFERED=1
 ENV PATH="/venv/bin:$PATH"
 ENV VIRTUAL_ENV=/venv
 
-ENV PORT=8000
+ENV PORT=8080
 
 COPY --from=prod-build /app /app
 COPY --from=prod-build /venv /venv
 
 WORKDIR /app
 
-EXPOSE 8000/tcp
+EXPOSE 8080/tcp
 
 CMD ["gunicorn", "iscc_did_driver.main:app", "-k", "uvicorn.workers.UvicornWorker"]
