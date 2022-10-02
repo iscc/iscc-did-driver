@@ -16,10 +16,10 @@ uvicorn = "^0.18"
 httpx = "^0.23"
 gunicorn = "^20.1"
 pydantic = {extras = ["dotenv"], version = "^1.10.2"}
-loguru = "^0.6.0"
-abnf-to-regexp = "^1.1.2"
-orjson = "^3.8.0"
-iscc-core = "^0.2.11"
+loguru = "^0.6"
+abnf-to-regexp = "^1.1"
+orjson = "^3.8"
+iscc-core = "^0.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1"
