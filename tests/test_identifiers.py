@@ -48,15 +48,21 @@ def test_accept_all(api):
         "@context": "https://w3id.org/did-resolution/v1",
         "didDocument": {
             "@context": "https://www.w3id.org/ns/did/v1",
-            "id": "did:iscc:miagwptv4j2z57ci",
-            "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
             "alsoKnownAs": "iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk5i353i",
+            "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
+            "id": "did:iscc:miagwptv4j2z57ci",
+            "service": [
+                {
+                    "id": "did:iscc:miagwptv4j2z57ci#iscc-metadata",
+                    "serviceEndpoint": "ipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.json",
+                    "type": "IsccMetadata",
+                }
+            ],
         },
         "didDocumentMetadata": {
-            "blockchain": "ETHEREUM",
-            "tx_hash": "0xbfb2b7b70bd8314132ab2a60fc447078891d317ee8cb42aeefde64fb9101252b",
+            "blockchain": "eip155:1",
             "created": "2022-08-31T19:08:01Z",
-            "meta_url": "ipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.json",
+            "tx_hash": "0xbfb2b7b70bd8314132ab2a60fc447078891d317ee8cb42aeefde64fb9101252b",
         },
         "didResolutionMetadata": {"contentType": "application/did+ld+json"},
     }
@@ -77,16 +83,20 @@ def test_accept_json(api):
             "alsoKnownAs": "iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk5i353i",
             "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
             "id": "did:iscc:miagwptv4j2z57ci",
+            "service": [
+                {
+                    "id": "did:iscc:miagwptv4j2z57ci#iscc-metadata",
+                    "serviceEndpoint": "ipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.json",
+                    "type": "IsccMetadata",
+                }
+            ],
         },
         "didDocumentMetadata": {
-            "blockchain": "ETHEREUM",
+            "blockchain": "eip155:1",
             "created": "2022-08-31T19:08:01Z",
-            "meta_url": "ipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.json",
             "tx_hash": "0xbfb2b7b70bd8314132ab2a60fc447078891d317ee8cb42aeefde64fb9101252b",
         },
-        "didResolutionMetadata": {
-            "contentType": "application/did+ld+json",
-        },
+        "didResolutionMetadata": {"contentType": "application/did+ld+json"},
     }
 
 
@@ -102,14 +112,20 @@ def test_ld_json(api):
         "@context": "https://w3id.org/did-resolution/v1",
         "didDocument": {
             "@context": "https://www.w3id.org/ns/did/v1",
-            "id": "did:iscc:miagwptv4j2z57ci",
-            "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
             "alsoKnownAs": "iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk5i353i",
+            "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
+            "id": "did:iscc:miagwptv4j2z57ci",
+            "service": [
+                {
+                    "id": "did:iscc:miagwptv4j2z57ci#iscc-metadata",
+                    "serviceEndpoint": "ipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.json",
+                    "type": "IsccMetadata",
+                }
+            ],
         },
         "didDocumentMetadata": {
-            "blockchain": "ETHEREUM",
+            "blockchain": "eip155:1",
             "created": "2022-08-31T19:08:01Z",
-            "meta_url": "ipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.json",
             "tx_hash": "0xbfb2b7b70bd8314132ab2a60fc447078891d317ee8cb42aeefde64fb9101252b",
         },
         "didResolutionMetadata": {"contentType": "application/did+ld+json"},
@@ -124,6 +140,13 @@ def test_did_ld_json(api):
         "alsoKnownAs": "iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk5i353i",
         "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
         "id": "did:iscc:miagwptv4j2z57ci",
+        "service": [
+            {
+                "id": "did:iscc:miagwptv4j2z57ci#iscc-metadata",
+                "serviceEndpoint": "ipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.json",
+                "type": "IsccMetadata",
+            }
+        ],
     }
 
 
@@ -132,8 +155,10 @@ def test_cbor(api):
     assert "application/did+cbor" in response.headers["content-type"]
     assert (
         response.content
-        == b"\xa4bidx\x19did:iscc:miagwptv4j2z57cikalsoKnownAsx<iscc:kecycpu3okiudz7tyb"
+        == b"\xa5bidx\x19did:iscc:miagwptv4j2z57cikalsoKnownAsx<iscc:kecycpu3okiudz7tyb"
         b"rk5hz4jgptillat2iw7ty7eyiji4qsk5i353ijcontrollerx;did:pkh:eip155:1:0x901ee44"
-        b"e3bddf4bc1c08a2ed229498512f8bcfdch@contextx\x1ehttps://www.w3id.org/ns/did/"
-        b"v1"
+        b"e3bddf4bc1c08a2ed229498512f8bcfdcgservice\x81\xa3bidx'did:iscc:miagwptv4j2"
+        b"z57ci#iscc-metadatadtypelIsccMetadataoserviceEndpointxWipfs://bafybeiccys7ki"
+        b"lr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.jsonh@contextx"
+        b"\x1ehttps://www.w3id.org/ns/did/v1"
     )

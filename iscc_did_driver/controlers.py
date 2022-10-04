@@ -1,4 +1,3 @@
-import io
 import re
 from datetime import datetime
 from typing import Optional
@@ -89,6 +88,16 @@ class Identifiers(ApiController):
             "controller": f"did:pkh:eip155:{chain_id}:{account}",
         }
 
+        # Optional service
+        if data.get("meta_url"):
+            did_doc["service"] = [
+                {
+                    "id": f"{did}#iscc-metadata",
+                    "type": "IsccMetadata",
+                    "serviceEndpoint": data["meta_url"],
+                }
+            ]
+
         if accept.value in {
             "application/did+json",
             "application/did+ld+json",
@@ -110,9 +119,8 @@ class Identifiers(ApiController):
         # Build DID document metadata
         did_doc_meta = {
             "created": data["timestamp"],
-            "blockchain": chain_name,
+            "blockchain": f"eip155:{chain_id}",
             "tx_hash": data["tx_hash"],
-            "meta_url": data["meta_url"],
         }
 
         # Build DID resolution metadata
