@@ -55,6 +55,6 @@ COPY --from=prod-build /venv /venv
 
 WORKDIR /app
 
-EXPOSE 8080/tcp
+EXPOSE 8080
 
 CMD ["gunicorn", "iscc_did_driver.main:app", "-k", "uvicorn.workers.UvicornWorker"]

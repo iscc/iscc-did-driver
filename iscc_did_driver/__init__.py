@@ -1,1 +1,1 @@
-from iscc_did_driver.options import opts
+from iscc_did_driver import controlers
