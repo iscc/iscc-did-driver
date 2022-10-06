@@ -29,7 +29,7 @@ COPY pyproject.toml poetry.lock /app/
 FROM builder AS prod-build
 
 # Create virtualenv and install dependencies
-RUN python -m venv /venv && . /venv/bin/activate && poetry install --only=main --no-root
+RUN python -m venv /venv && . /venv/bin/activate && poetry install --only=main
 
 COPY . /app/
 
