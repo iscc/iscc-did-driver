@@ -7,7 +7,7 @@ import pathlib
 from blacksheep import Application
 from iscc_did_driver.options import opts
 from iscc_did_driver import __version__
-from loguru import logger as log
+
 
 HERE = pathlib.Path(__file__).parent.absolute().as_posix()
 
@@ -18,21 +18,21 @@ app.use_cors(allow_methods="*", allow_origins="*", allow_headers="*")
 
 @app.on_start
 async def boot(application: Application) -> None:
-    log.info(f" Booting iscc:did driver v{__version__}")
-    log.info(" ------------------------------------")
-    log.info(" ######    ######    ######    ###### ")
-    log.info("   ##     ##        ###       ###     ")
-    log.info("   ##      #####    ##        ##  ")
-    log.info("   ##          ##   ###       ###   ")
-    log.info(" ######   ######     ######    ######")
-    log.info(" ------------------------------------")
-    log.info(" International Standard Content Code ")
+    print(f" Booting iscc:did driver v{__version__}")
+    print(" ------------------------------------")
+    print(" ######    ######    ######    ###### ")
+    print("   ##     ##        ###       ###     ")
+    print("   ##      #####    ##        ##  ")
+    print("   ##          ##   ###       ###   ")
+    print(" ######   ######     ######    ######")
+    print(" ------------------------------------")
+    print(" International Standard Content Code ")
 
 
 @app.after_start
 async def done(application: Application) -> None:
-    log.info(" ------------------------------------")
-    log.info(" did:iscc method driver initialized! ")
+    print(" ------------------------------------")
+    print(" did:iscc method driver initialized! ")
 
 
 def main():
