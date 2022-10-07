@@ -20,6 +20,7 @@ loguru = "^0.6"
 orjson = "^3.8"
 iscc-core = "^0.2"
 cbor2 = "^5.4.3"
+sentry-sdk = "^1.9.10"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1"

@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseSettings, Field, HttpUrl
 
 
@@ -11,6 +13,17 @@ class Options(BaseSettings):
     iscc_registry: HttpUrl = Field(
         "https://iscc.id", description="URL to an ISCC registry instantiation."
     )
+    sentry_dsn: Optional[str] = Field(default="", description="Sentry DSN for error reporting")
 
 
 opts = Options()
+
+
+if opts.sentry_dsn:
+    import sentry_sdk
+
+    sentry_sdk.init(
+        dsn=opts.sentry_dsn,
+        environment="iscc-did-driver",
+        traces_sample_rate=0,
+    )
