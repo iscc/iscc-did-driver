@@ -83,6 +83,7 @@ class Identifiers(ApiController):
         chain_id = self.chain_map[chain_name]
         account = data["declarer"].lower()
         did_doc = {
+            "@context": "https://www.w3id.org/ns/did/v1",
             "id": did,
             "alsoKnownAs": data["iscc_code"].lower(),
             "controller": f"did:pkh:eip155:{chain_id}:{account}",
@@ -104,8 +105,8 @@ class Identifiers(ApiController):
             "application/did+cbor",
         }:
             # Explicitly requested only DID Document in various representation.
-            if accept.value != "application/did+json":
-                did_doc["@context"] = "https://www.w3id.org/ns/did/v1"
+            if accept.value == "application/did+json":
+                del did_doc["@context"]
             data = (
                 cbor2.dumps(did_doc)
                 if accept.value == "application/did+cbor"
@@ -115,7 +116,6 @@ class Identifiers(ApiController):
             content = Content(content_type=ct, data=data)
             return Response(200, content=content)
 
-        did_doc["@context"] = "https://www.w3id.org/ns/did/v1"
         # Build DID document metadata
         did_doc_meta = {
             "created": data["timestamp"],
