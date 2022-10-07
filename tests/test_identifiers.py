@@ -155,10 +155,10 @@ def test_cbor(api):
     assert "application/did+cbor" in response.headers["content-type"]
     assert (
         response.content
-        == b"\xa5bidx\x19did:iscc:miagwptv4j2z57cikalsoKnownAsx<iscc:kecycpu3okiudz7tyb"
-        b"rk5hz4jgptillat2iw7ty7eyiji4qsk5i353ijcontrollerx;did:pkh:eip155:1:0x901ee44"
-        b"e3bddf4bc1c08a2ed229498512f8bcfdcgservice\x81\xa3bidx'did:iscc:miagwptv4j2"
-        b"z57ci#iscc-metadatadtypelIsccMetadataoserviceEndpointxWipfs://bafybeiccys7ki"
-        b"lr3rynlhoelrdn6ragpbfoti73h4e3oszbgd5inthicja/iscc-metadata/2.jsonh@contextx"
-        b"\x1ehttps://www.w3id.org/ns/did/v1"
+        == b"\xa5h@contextx\x1ehttps://www.w3id.org/ns/did/v1bidx\x19did:iscc:miagwptv"
+        b"4j2z57cikalsoKnownAsx<iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk"
+        b"5i353ijcontrollerx;did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcf"
+        b"dcgservice\x81\xa3bidx'did:iscc:miagwptv4j2z57ci#iscc-metadatadtypelIsccMe"
+        b"tadataoserviceEndpointxWipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3o"
+        b"szbgd5inthicja/iscc-metadata/2.json"
     )
