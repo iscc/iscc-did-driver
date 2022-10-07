@@ -9,9 +9,10 @@ class Options(BaseSettings):
         env_prefix = "ISCC_DID_DRIVER_"
         env_file_encoding = "utf-8"
 
-    debug: bool = Field(False, description="Run application in debug mode (default: False)")
-    iscc_registry: HttpUrl = Field(
-        "https://iscc.id", description="URL to an ISCC registry instantiation."
+    debug: bool = Field(False, description="Run the service in debug mode (default: False)")
+    registry: HttpUrl = Field(
+        "https://iscc.id",
+        description="URL to an ISCC registry instantiation (default: https://iscc.id)",
     )
     sentry_dsn: Optional[str] = Field(default="", description="Sentry DSN for error reporting")
 

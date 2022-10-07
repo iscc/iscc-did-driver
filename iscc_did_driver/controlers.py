@@ -71,7 +71,7 @@ class Identifiers(ApiController):
         did = DID_SYNTAX.match(did).group(0)
         iscc = did.replace("did:", "").upper()
         log.debug(f"read: {iscc}")
-        url = opts.iscc_registry + f"/api/v1/declaration/{iscc}"
+        url = opts.registry + f"/api/v1/declaration/{iscc}"
         async with httpx.AsyncClient() as client:
             response = await client.get(url)
         if response.status_code in (404, 500):
