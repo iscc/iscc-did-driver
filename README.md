@@ -24,7 +24,7 @@ The service provides a REST API for resolving `did:iscc` identifiers sourced fro
 registrations. The service can be run standalone or plugged in as a driver for the
 [DIF Universal Resolver](https://github.com/decentralized-identity/universal-resolver).
 
-A public instance with interactive API documentation is available at https://did.iscc.io.
+A public instance with interactive API documentation is available at https://did.iscc.id.
 
 ## Configuration
 
