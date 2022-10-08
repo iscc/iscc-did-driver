@@ -50,10 +50,13 @@ class Identifiers(ApiController):
         log.debug(f"resolve: {did}")
         log.debug(f"type requested: {accept.value}")
 
-        try:
-            content_type = decide_content_type([accept.value], list(self.accept_map.keys()))
-        except NoAgreeableContentTypeError:
-            return self.status_code(406, f"No agreeable content type found for {accept.value}")
+        if 'application/ld+json;profile="https://w3id.org/did-resolution' in accept.value:
+            content_type = 'application/ld+json;profile="https://w3id.org/did-resolution"'
+        else:
+            try:
+                content_type = decide_content_type([accept.value], list(self.accept_map.keys()))
+            except NoAgreeableContentTypeError:
+                return self.status_code(406, f"No agreeable content type found for {accept.value}")
         log.debug(f"type selected: {content_type}")
         response_type = self.accept_map[content_type]
         log.debug(f"type response: {response_type}")

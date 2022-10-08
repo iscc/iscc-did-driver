@@ -135,3 +135,16 @@ def test_cbor(api):
         b"tadataoserviceEndpointxWipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3o"
         b"szbgd5inthicja/iscc-metadata/2.json"
     )
+
+
+def test_negotiation(api):
+    header = {
+        "Accept": (
+            'application/ld+json;profile="https://w3id.org/did-resolution",application/did+ld+json'
+        )
+    }
+    response = api.get("/did:iscc:miagwptv4j2z57ci", headers=header)
+    assert (
+        response.headers["content-type"]
+        == 'application/ld+json;profile="https://w3id.org/did-resolution";charset=utf-8'
+    )
