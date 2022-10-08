@@ -37,7 +37,7 @@ The service is configured via environment variables:
 An enviroment configuration placed in a `.env` file in the working directory will be automatically
 loaded at application startup.
 
-## Develoment Setup
+## Development Setup
 
 **Requirements:**
 
