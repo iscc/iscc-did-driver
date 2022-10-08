@@ -33,10 +33,10 @@ class Identifiers(ApiController):
 
     accept_map = {
         'application/ld+json;profile="https://w3id.org/did-resolution"': rt_resolution,
+        "application/did+ld+json": rt_did_ld_json,
         "application/json": rt_did_json,
         "application/ld+json": rt_did_ld_json,
         "application/did+json": rt_did_json,
-        "application/did+ld+json": rt_did_ld_json,
         "application/cbor": rt_did_cbor,
         "application/did+cbor": rt_did_cbor,
     }
