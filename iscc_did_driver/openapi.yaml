@@ -1,22 +1,30 @@
-openapi: 3.0.0
+openapi: 3.0.3
 servers:
 - url: /1.0/
 info:
-  description: Universal Resolver Driver for did:iscc
-  version: 1.0.0
+  description: Universal Resolver Driver for the `did:iscc` method. See [ISCC DID Method Specification](https://ieps.iscc.codes/iep-0015/)
+    for details.
+  version: 0.1.0
   title: ISCC DID driver
   contact:
     email: tp@iscc.foundation
+tags:
+- name: resolver
+  description: Resolves ISCC-IDs as [Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/)
+    with the `did:iscc` method
 paths:
   /identifiers/{identifier}:
     get:
-      summary: Resolve an ISCC DID.
-      description: <p>This endpoint resolves a DID. As input it takes the DID, plus DID resolution
-        <a href="https://www.w3.org/TR/did-core/#did-resolution-options">options</a>. The
-        output is a DID document in one of the supported representations, plus metadata.</p>
-        <p>See the <a href="https://w3c-ccg.github.io/did-resolution/">DID Resolution</a>
-        specification for additional details.</p>
       operationId: resolve
+      summary: Resolve an ISCC DID.
+      description: 'This endpoint resolves a DID with the `did:iscc` method. As input it takes
+        the DID, plus DID resolution [options](https://www.w3.org/TR/did-core/#did-resolution-options).
+        The output is a DID document or resolution result in one of the supported representations.<br><br>
+
+        See the [DID Resolution](https://w3c-ccg.github.io/did-resolution/) specification
+        for additional details.'
+      tags:
+      - resolver
       parameters:
       - in: path
         required: true
@@ -36,59 +44,21 @@ paths:
           result. See <a href="https://www.w3.org/TR/did-core/#representations">https://www.w3.org/TR/did-core/#representations</a>
           and <a href="https://w3c-ccg.github.io/did-resolution/#did-resolution-result">https://w3c-ccg.github.io/did-resolution/#did-resolution-result</a>.
         examples:
-          application/did+json:
+          '*/*':
+            value: '*/*'
+          application/json:
             value: application/json
-            description: Media type of a DID document (JSON representation).
-          application/did+ld+json:
-            value: application/did+ld+json
-            description: Media type of a DID document (JSON-LD representation).
-          application/ld+json;profile="https://w3id.org/did-resolution":
-            value: application/ld+json;profile="https://w3id.org/did-resolution"
-            description: Media type of a DID resolution result (JSON-LD representation).
+          application/ld+json:
+            value: application/ld+json
+          application/cbor:
+            value: application/cbor
       responses:
         '200':
           description: successfully resolved!
-          content:
-            application/did+json:
-              schema:
-                type: object
-                description: The DID document (JSON representation).
-                example:
-                  id: did:sov:WRfXPg8dantKVubE3HX8pw
-                  verificationMethod:
-                  - id: did:sov:WRfXPg8dantKVubE3HX8pw#key-1
-                    type: Ed25519VerificationKey2018
-                    publicKeyBase58: H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV
-            application/did+ld+json:
-              schema:
-                type: object
-                description: The DID document (JSON-LD representation).
-                example:
-                  '@context': https://www.w3.org/ns/did/v1
-                  id: did:sov:WRfXPg8dantKVubE3HX8pw
-                  verificationMethod:
-                  - id: did:sov:WRfXPg8dantKVubE3HX8pw#key-1
-                    type: Ed25519VerificationKey2018
-                    publicKeyBase58: H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV
-            application/ld+json;profile="https://w3id.org/did-resolution":
-              schema:
-                $ref: '#/components/schemas/ResolutionResult'
         '400':
           description: invalid input!
         '410':
           description: successfully resolved (deactivated)!
-          content:
-            application/did+json:
-              schema:
-                type: object
-                description: The deactivated DID document (JSON representation).
-            application/did+ld+json:
-              schema:
-                type: object
-                description: The deactivated DID document (JSON-LD representation).
-            application/ld+json;profile="https://w3id.org/did-resolution":
-              schema:
-                $ref: '#/components/schemas/ResolutionResult'
         '500':
           description: error!
 components:
