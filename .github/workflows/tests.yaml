@@ -15,6 +15,9 @@ jobs:
         with:
           poetry-version: 1.2.1
 
+      - name: Install setuptools with compatible version
+        run: pip install setuptools==59.6.0
+
       - name: Install Dependencies
         run: poetry install
 
