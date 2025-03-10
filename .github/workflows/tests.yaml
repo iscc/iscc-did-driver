@@ -10,6 +10,12 @@ jobs:
         with:
           python-version: '3.10'
 
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libyaml-dev
+
+      - name: Configure pip to use wheels
+        run: pip config set global.use-binary-packages true
+
       - name: Install Poetry
         uses: abatilo/actions-poetry@v2.0.0
         with:
