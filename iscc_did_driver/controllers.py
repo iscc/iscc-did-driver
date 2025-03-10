@@ -106,7 +106,7 @@ class Identifiers(ApiController):
         chain_id = self.chain_map[chain_name]
         account = data["declarer"].lower()
         did_doc = {
-            "@context": "https://www.w3id.org/ns/did/v1",
+            "@context": "https://www.w3.org/ns/did/v1",
             "id": did,
             "alsoKnownAs": data["iscc_code"].lower(),
             "controller": f"did:pkh:eip155:{chain_id}:{account}",

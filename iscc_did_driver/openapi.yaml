@@ -4,10 +4,10 @@ servers:
 info:
   description: Universal Resolver Driver for the `did:iscc` method. See [ISCC DID Method Specification](https://ieps.iscc.codes/iep-0015/)
     for details.
-  version: 0.1.0
+  version: 0.1.1
   title: ISCC DID driver
   contact:
-    email: tp@iscc.foundation
+    email: tp@iscc.io
 tags:
 - name: resolver
   description: Resolves ISCC-IDs as [Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/)

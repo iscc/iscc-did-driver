@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "iscc-did-driver"
-version = "0.1.0"
-description = ""
-authors = ["Titusz Pan <titusz.pan@gmail.com>"]
+version = "0.1.1"
+description = "ISCC Driver for Universal DID Resolver"
+authors = ["Titusz Pan <tp@iscc.io>"]
 readme = "README.md"
 packages = [{include = "iscc_did_driver"}]
 

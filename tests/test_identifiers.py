@@ -47,7 +47,7 @@ def test_accept_all(api):
     assert result == {
         "@context": "https://w3id.org/did-resolution/v1",
         "didDocument": {
-            "@context": "https://www.w3id.org/ns/did/v1",
+            "@context": "https://www.w3.org/ns/did/v1",
             "alsoKnownAs": "iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk5i353i",
             "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
             "id": "did:iscc:miagwptv4j2z57ci",
@@ -91,7 +91,7 @@ def test_ld_json(api):
     assert response.headers["content-type"] == "application/did+ld+json;charset=utf-8"
     result = response.json()
     assert result == {
-        "@context": "https://www.w3id.org/ns/did/v1",
+        "@context": "https://www.w3.org/ns/did/v1",
         "alsoKnownAs": "iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk5i353i",
         "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
         "id": "did:iscc:miagwptv4j2z57ci",
@@ -109,7 +109,7 @@ def test_did_ld_json(api):
     response = api.get("/did:iscc:miagwptv4j2z57ci", headers={"Accept": "application/did+ld+json"})
     assert "application/did+ld+json" in response.headers["content-type"]
     assert response.json() == {
-        "@context": "https://www.w3id.org/ns/did/v1",
+        "@context": "https://www.w3.org/ns/did/v1",
         "alsoKnownAs": "iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk5i353i",
         "controller": "did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc",
         "id": "did:iscc:miagwptv4j2z57ci",
@@ -128,12 +128,12 @@ def test_cbor(api):
     assert "application/did+cbor" in response.headers["content-type"]
     assert (
         response.content
-        == b"\xa5h@contextx\x1ehttps://www.w3id.org/ns/did/v1bidx\x19did:iscc:miagwptv"
-        b"4j2z57cikalsoKnownAsx<iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk"
-        b"5i353ijcontrollerx;did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcf"
-        b"dcgservice\x81\xa3bidx'did:iscc:miagwptv4j2z57ci#iscc-metadatadtypelIsccMe"
-        b"tadataoserviceEndpointxWipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3o"
-        b"szbgd5inthicja/iscc-metadata/2.json"
+        == b"\xa5h@contextx\x1chttps://www.w3.org/ns/did/v1bidx\x19did:iscc:miagwptv4j"
+        b"2z57cikalsoKnownAsx<iscc:kecycpu3okiudz7tybrk5hz4jgptillat2iw7ty7eyiji4qsk5i"
+        b"353ijcontrollerx;did:pkh:eip155:1:0x901ee44e3bddf4bc1c08a2ed229498512f8bcfdc"
+        b"gservice\x81\xa3bidx'did:iscc:miagwptv4j2z57ci#iscc-metadatadtypelIsccMeta"
+        b"dataoserviceEndpointxWipfs://bafybeiccys7kilr3rynlhoelrdn6ragpbfoti73h4e3osz"
+        b"bgd5inthicja/iscc-metadata/2.json"
     )
 
 
