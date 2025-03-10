@@ -1,6 +1,6 @@
 FROM python:3.9 AS builder
 
-ARG POETRY_VERSION=1.2.1
+ARG POETRY_VERSION=2.1.1
 
 # Disable stdout/stderr buffering, can cause issues with Docker logs
 ENV PYTHONUNBUFFERED=1
