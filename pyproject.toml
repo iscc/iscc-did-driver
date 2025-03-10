@@ -22,6 +22,7 @@ iscc-core = "^0.2"
 cbor2 = "^5.4.3"
 sentry-sdk = "^1.9.10"
 content-negotiation = "^1.1.1"
+pyyaml = "^6.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1"
